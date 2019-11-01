@@ -1,0 +1,4 @@
+---
+# defaults file for set_hostname
+
+domain_name: "training.b1-systems.de"
