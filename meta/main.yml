@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: 'set_hostname'
   author: 'Johannes Kastl'
   description: 'Set the hostname in /etc/hostname'
   company: 'B1 Systems GmbH'
