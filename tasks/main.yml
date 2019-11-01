@@ -1,0 +1,13 @@
+---
+# tasks file for set_hostname
+
+- name: "Put FQDN into /etc/hostname"
+  template:
+    src: "etc_hostname.j2"
+    dest: "/etc/hostname"
+    owner: "0"
+    group: "0"
+    mode: "0644"
+  notify:
+    - "Reboot"
+    - "Wait for the machine(s) to be ready again"
