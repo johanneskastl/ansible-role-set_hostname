@@ -11,3 +11,18 @@
   notify:
     - "Reboot"
     - "Wait for the machine(s) to be ready again"
+
+- name: "Make sure hostname and FQDN are present in /etc/hosts"
+  lineinfile:
+    path: "/etc/hosts"
+    # better not match the exact line, otherwise an additional space will result in duplicate lines
+    # or a missing FQDN will not be fixed, but a duplicate line inserted...
+    # regexp: "^{{ internal_ip | default( ansible_default_ipv4['address'] ) }}.*{{ inventory_hostname }}.*{{ inventory_hostname }}.{{ domain_name }}"
+    regexp: "{{ inventory_hostname }}"
+    line: "{{ internal_ip | default( ansible_default_ipv4['address'] ) }} {{ inventory_hostname }} {{ inventory_hostname }}.{{ domain_name }}"
+    owner: "root"
+    group: "root"
+    mode: '0644'
+  notify:
+    - "Reboot"
+    - "Wait for the machine(s) to be ready again"
