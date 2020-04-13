@@ -4,6 +4,7 @@ set_hostname
 =========
 
 Set a node's hostname in /etc/hostname. Uses the FQDN by default, with the domain part configurable via variable.
+Reboot the node afterwards for all the changes to take effect.
 
 Requirements
 ------------
