@@ -14,7 +14,7 @@ None.
 Role Variables
 --------------
 
-`domain_name`: Specify the domain part of the FQDN.
+`domain_name`: Specify the domain part of the FQDN. Default value is `training.b1-systems.de`.
 
 Dependencies
 ------------
