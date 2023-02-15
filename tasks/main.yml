@@ -2,7 +2,7 @@
 # tasks file for set_hostname
 
 - name: "Put FQDN into /etc/hostname"
-  template:
+  ansible.builtin.template:
     src: "etc_hostname.j2"
     dest: "/etc/hostname"
     owner: "0"
@@ -13,7 +13,7 @@
     - "Wait for the machine(s) to be ready again"
 
 - name: "Make sure hostname and FQDN are present in /etc/hosts"
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: "/etc/hosts"
     # better not match the exact line, otherwise an additional space will result in duplicate lines
     # or a missing FQDN will not be fixed, but a duplicate line inserted...
