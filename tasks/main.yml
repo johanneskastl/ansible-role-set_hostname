@@ -1,28 +1,28 @@
 ---
 # tasks file for set_hostname
 
-- name: "Put FQDN into /etc/hostname"
+- name: 'Put FQDN into /etc/hostname'
   ansible.builtin.template:
-    src: "etc_hostname.j2"
-    dest: "/etc/hostname"
-    owner: "0"
-    group: "0"
-    mode: "0644"
+    src: 'etc_hostname.j2'
+    dest: '/etc/hostname'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
   notify:
-    - "Reboot"
-    - "Wait for the machine(s) to be ready again"
+    - 'Reboot'
+    - 'Wait for the machine(s) to be ready again'
 
-- name: "Make sure hostname and FQDN are present in /etc/hosts"
+- name: 'Make sure hostname and FQDN are present in /etc/hosts'
   ansible.builtin.lineinfile:
-    path: "/etc/hosts"
+    path: '/etc/hosts'
     # better not match the exact line, otherwise an additional space will result in duplicate lines
     # or a missing FQDN will not be fixed, but a duplicate line inserted...
     # regexp: "^{{ internal_ip | default( ansible_default_ipv4['address'] ) }}.*{{ inventory_hostname }}.*{{ inventory_hostname }}.{{ domain_name }}"
     regexp: "{{ inventory_hostname }}"
     line: "{{ internal_ip | default( ansible_default_ipv4['address'] ) }} {{ inventory_hostname }}.{{ domain_name }} {{ inventory_hostname }}"
-    owner: "root"
-    group: "root"
+    owner: 'root'
+    group: 'root'
     mode: '0644'
   notify:
-    - "Reboot"
-    - "Wait for the machine(s) to be ready again"
+    - 'Reboot'
+    - 'Wait for the machine(s) to be ready again'
