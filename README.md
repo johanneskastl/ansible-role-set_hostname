@@ -19,14 +19,15 @@ Role Variables
 Dependencies
 ------------
 
-Needs the reboot role to trigger a reboot after setting the hostname. This avoids funny corner cases with hostnames not being set properly.
+Needs the `reboot` role to trigger a reboot after setting the hostname. This avoids funny corner cases with hostnames not being set properly.
 
 Example Playbook
 ----------------
 
     - hosts: servers
       roles:
-         - { role: johanneskastl.set_hostname, domain_name: 'example.org' }
+         - role: johanneskastl.set_hostname
+           domain_name: 'example.org'
 
 License
 -------
