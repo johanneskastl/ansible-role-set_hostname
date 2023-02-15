@@ -19,7 +19,7 @@
     # or a missing FQDN will not be fixed, but a duplicate line inserted...
     # regexp: "^{{ internal_ip | default( ansible_default_ipv4['address'] ) }}.*{{ inventory_hostname }}.*{{ inventory_hostname }}.{{ domain_name }}"
     regexp: "{{ inventory_hostname }}"
-    line: "{{ internal_ip | default( ansible_default_ipv4['address'] ) }} {{ inventory_hostname }}.{{ domain_name }} {{ inventory_hostname }}"
+    line: "{{ internal_ip | default(ansible_default_ipv4['address']) }} {{ inventory_hostname }}.{{ domain_name }} {{ inventory_hostname }}"
     owner: 'root'
     group: 'root'
     mode: '0644'
